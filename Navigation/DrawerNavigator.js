@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../Screens/Home';
+import Home from '../Screens/Home/Home';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import DrawerCom from '../Components/DrawerCom/DrawerCom';
 import Login from '../Screens/Login/Login';

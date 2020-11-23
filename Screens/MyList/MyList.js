@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import Header from '../Components/Header/Header';
+import Header from '../../Components/Header/Header';
 function MyList({navigation}) {
   return (
     <View style={{flex: 1}}>

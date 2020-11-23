@@ -7,12 +7,12 @@ import {
   View,
 } from 'react-native';
 
-import BestSelling from '../Components/BestSelling/BestSelling';
-import Dairy from '../Components/Dairy/Dairy';
-import Cans from '../Components/Cans/Cans';
-import Header from '../Components/Header/Header';
-import MP from '../Components/MP/MP';
-import TopBanner from '../Components/TopBanner/TopBanner';
+import BestSelling from '../../Components/BestSelling/BestSelling';
+import Dairy from '../../Components/Dairy/Dairy';
+import Cans from '../../Components/Cans/Cans';
+import Header from '../../Components/Header/Header';
+import MP from '../../Components/MP/MP';
+import TopBanner from '../../Components/TopBanner/TopBanner';
 
 function Home({navigation}) {
   return (

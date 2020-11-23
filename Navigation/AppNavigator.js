@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import ProfileNavigator from './ProfileNavigator';
 import DrawerNavigator from './DrawerNavigator';
-import Cart from '../Screens/Cart';
-import MyList from '../Screens/MyList';
+import Cart from '../Screens/Cart/Cart';
+import MyList from '../Screens/MyList/MyList';
 
 const Tab = createBottomTabNavigator();
 

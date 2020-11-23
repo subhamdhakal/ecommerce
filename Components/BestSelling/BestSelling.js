@@ -1,41 +1,57 @@
 import React from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
+import {useDispatch} from 'react-redux';
 
-function BestSelling() {
+function BestSelling({navigation}) {
+  const dispatch = useDispatch();
   const DATA = [
     {
       id: Math.random().toString(),
       image: require('../../Assets/images/best5.jpg'),
       name: 'Olive Oil',
-      desc: '1 pack - 1kg',
+      descShort: '1 pack - 1kg',
       price: '$10',
     },
     {
       id: Math.random().toString(),
       image: require('../../Assets/images/best2.png'),
       name: 'Olive Oil Small',
-      desc: 'Italian  - 700gr',
+      descShort: 'Italian  - 700gr',
       price: '$5',
     },
     {
       id: Math.random().toString(),
       image: require('../../Assets/images/best4.png'),
       name: 'Olive Oil Large',
-      desc: 'Extra large - 1.3kg',
+      descShort: 'Extra large - 1.3kg',
       price: '$14',
     },
   ];
 
   const renderItem = ({item}) => {
+    const addToBasket = () => {
+      dispatch({
+        type: 'ADD_TO_BASKET',
+        itemData: {
+          id: item.id,
+          image: item.image,
+          name: item.name,
+          descShort: item.descShort,
+          price: item.price,
+        },
+      });
+    };
     return (
       <View style={styles.bestContainer}>
         <Image source={item.image} style={styles.img} />
         <Text style={styles.itemName}>{item.name}</Text>
-        <Text style={styles.itemDesc}>{item.desc}</Text>
+        <Text style={styles.itemDesc}>{item.descShort}</Text>
         <Text style={styles.itemPrice}>{item.price}</Text>
         <TouchableOpacity style={styles.addBtn}>
-          <Text style={styles.addBtnText}>Add to Cart</Text>
+          <Text style={styles.addBtnText} onPress={addToBasket}>
+            Add to Cart
+          </Text>
         </TouchableOpacity>
       </View>
     );

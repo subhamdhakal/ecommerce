@@ -13,6 +13,7 @@ import {
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import Header from '../../Components/Header/Header';
 import styles from './styles';
+import {useSelector, useDispatch} from 'react-redux';
 
 function SelectedItem({navigation}) {
   const DATA = [
@@ -24,6 +25,8 @@ function SelectedItem({navigation}) {
     },
   ];
 
+  const counter = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
   const renderItem = ({item}) => {
     return <Image source={item.img} style={styles.image} />;
   };
@@ -50,11 +53,15 @@ function SelectedItem({navigation}) {
             <View style={styles.qtyContainer}>
               <Text style={styles.price}>Quantity</Text>
               <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity style={styles.qBtn}>
+                <TouchableOpacity
+                  style={styles.qBtn}
+                  onPress={() => dispatch({type: 'REMOVE'})}>
                   <Ionicon name="remove" size={24} />
                 </TouchableOpacity>
-                <Text style={{fontSize: 18}}>1</Text>
-                <TouchableOpacity style={styles.qBtn}>
+                <Text style={{fontSize: 18}}>{counter}</Text>
+                <TouchableOpacity
+                  style={styles.qBtn}
+                  onPress={() => dispatch({type: 'ADD'})}>
                   <Ionicon name="add-outline" size={24} />
                 </TouchableOpacity>
               </View>

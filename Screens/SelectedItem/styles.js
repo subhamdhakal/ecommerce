@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     borderColor: 'grey',
     backgroundColor: 'lightgrey',
-    padding: 2,
+    padding: 3,
   },
   review: {},
   btn: {
