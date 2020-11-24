@@ -6,9 +6,10 @@ import {ADD_TO_BASKET} from '../../Actons/types';
 
 function BestSelling({navigation}) {
   const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket);
   const DATA = [
     {
-      id: Math.random().toString(),
+      id: '2',
       image: require('../../Assets/images/best5.jpg'),
       name: 'Olive Oil',
       descShort: '1 pack - 1kg',
@@ -19,7 +20,7 @@ function BestSelling({navigation}) {
       rating: 5,
     },
     {
-      id: Math.random().toString(),
+      id: '3',
       image: require('../../Assets/images/best2.png'),
       name: 'Olive Oil Small',
       descShort: 'Italian  - 700gr',
@@ -30,7 +31,7 @@ function BestSelling({navigation}) {
       rating: 4,
     },
     {
-      id: Math.random().toString(),
+      id: '4',
       image: require('../../Assets/images/best4.png'),
       name: 'Olive Oil Large',
       descShort: 'Extra large-1.3kg',
@@ -41,22 +42,28 @@ function BestSelling({navigation}) {
       rating: 3,
     },
   ];
-
+  let arr = [];
+  basket.map((item) => {
+    arr.push(item.id);
+  });
+  console.log(arr);
   const renderItem = ({item}) => {
     const addToBasket = () => {
-      dispatch({
-        type: ADD_TO_BASKET,
-        itemData: {
-          id: item.id,
-          image: item.image,
-          name: item.name,
-          descShort: item.descShort,
-          price: item.price,
-          qty: item.qty,
-          descLong: item.descLong,
-          rating: item.rating,
-        },
-      });
+      if (!arr.includes(item.id)) {
+        dispatch({
+          type: ADD_TO_BASKET,
+          itemData: {
+            id: item.id,
+            image: item.image,
+            name: item.name,
+            descShort: item.descShort,
+            price: item.price,
+            qty: item.qty,
+            descLong: item.descLong,
+            rating: item.rating,
+          },
+        });
+      }
     };
 
     return (

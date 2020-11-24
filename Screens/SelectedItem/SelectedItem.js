@@ -24,8 +24,8 @@ import {
 
 function SelectedItem({navigation, route}) {
   const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket);
   const saved = useSelector((state) => state.saved);
-
   const {
     id,
     image,
@@ -38,9 +38,12 @@ function SelectedItem({navigation, route}) {
   } = route.params;
 
   const [heart, setHeart] = useState(true);
-
+  let savedArr = [];
+  saved.map((item) => {
+    savedArr.push(item.id);
+  });
   const addToSaved = () => {
-    if (heart) {
+    if (heart && !savedArr.includes(id)) {
       dispatch({
         type: ADD_TO_SAVED,
         itemData: {
@@ -60,20 +63,26 @@ function SelectedItem({navigation, route}) {
     }
     setHeart(!heart);
   };
+  let Arr = [];
+  basket.map((item) => {
+    Arr.push(item.id);
+  });
   const addToBasket = () => {
-    dispatch({
-      type: ADD_TO_BASKET,
-      itemData: {
-        id: id,
-        image: image,
-        name: name,
-        descShort: descShort,
-        price: price,
-        qty: qty,
-        descLong: descLong,
-        rating: rating,
-      },
-    });
+    if (!Arr.includes(id)) {
+      dispatch({
+        type: ADD_TO_BASKET,
+        itemData: {
+          id: id,
+          image: image,
+          name: name,
+          descShort: descShort,
+          price: price,
+          qty: qty,
+          descLong: descLong,
+          rating: rating,
+        },
+      });
+    }
     navigation.navigate('cart');
   };
 
