@@ -10,7 +10,7 @@ function DrawerCom({navigation, props}) {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require('../../Assets/images/avatar.png')}
+          source={require('../../Assets/images/avatar.jpg')}
         />
 
         <View style={styles.textContainer}>

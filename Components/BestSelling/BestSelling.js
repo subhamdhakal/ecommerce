@@ -42,14 +42,14 @@ function BestSelling({navigation}) {
       rating: 3,
     },
   ];
-  let arr = [];
+  let Arr = [];
   basket.map((item) => {
-    arr.push(item.id);
+    Arr.push(item.id);
   });
-  console.log(arr);
+  console.log(Arr);
   const renderItem = ({item}) => {
     const addToBasket = () => {
-      if (!arr.includes(item.id)) {
+      if (!Arr.includes(item.id)) {
         dispatch({
           type: ADD_TO_BASKET,
           itemData: {

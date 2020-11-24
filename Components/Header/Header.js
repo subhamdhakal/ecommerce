@@ -50,16 +50,16 @@ function Header({navigation, iconChange}) {
         {open == false ? (
           <>
             <TouchableOpacity onPress={openSearch}>
-              <Ionicon name="search" size={30} style={styles.icon} />
+              {iconChange ? null : (
+                <Ionicon name="search" size={30} style={styles.icon} />
+              )}
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('mylist')}>
               {savedNotifier > 0 ? (
                 <>
                   <View style={styles.notifierContainer}>
-                    <Text style={{color: 'white', alignSelf: 'center'}}>
-                      {savedNotifier}
-                    </Text>
+                    <Text style={styles.notifierText}>{savedNotifier}</Text>
                   </View>
                   <Ionicon name="heart" size={30} style={styles.icon} />
                 </>
@@ -71,9 +71,7 @@ function Header({navigation, iconChange}) {
               {notifier > 0 ? (
                 <>
                   <View style={styles.notifierContainer}>
-                    <Text style={{color: 'white', alignSelf: 'center'}}>
-                      {notifier}
-                    </Text>
+                    <Text style={styles.notifierText}>{notifier}</Text>
                   </View>
                   <Ionicon name="cart" size={30} style={styles.icon} />
                 </>
@@ -90,17 +88,12 @@ function Header({navigation, iconChange}) {
             <TextInput
               placeholder="Search"
               maxLength={15}
-              style={{zIndex: 1}}
-              underlineColorAndroid="rgb(200,200,200)"
+              style={styles.searchInput}
+              placeholderTextColor="rgb(46, 64, 60)"
             />
             <TouchableOpacity
               onPress={close}
-              style={{
-                alignItems: 'center',
-                marginLeft: 10,
-                justifyContent: 'center',
-                backgroundColor: 'white',
-              }}>
+              style={styles.searchIconContainer}>
               <Ionicon name="search" size={30} style={styles.icon} />
             </TouchableOpacity>
           </View>

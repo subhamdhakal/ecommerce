@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginLeft: 15,
     borderRadius: 9,
+    borderColor: 'grey',
   },
   img: {
     height: width * 0.35,

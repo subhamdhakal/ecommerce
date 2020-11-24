@@ -39,6 +39,24 @@ const styles = StyleSheet.create({
     marginRight: -10,
     zIndex: 1,
   },
+  notifierText: {
+    color: 'white',
+    alignSelf: 'center',
+  },
+  searchInput: {
+    zIndex: 1,
+    paddingVertical: 7,
+    paddingHorizontal: 20,
+    borderWidth: 1,
+    borderColor: 'rgb(200,200,200)',
+    borderRadius: 7,
+    marginVertical: 5,
+  },
+  searchIconContainer: {
+    alignItems: 'center',
+    marginLeft: 10,
+    justifyContent: 'center',
+  },
 });
 
 export default styles;
