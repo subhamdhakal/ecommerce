@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {ADD_TO_BASKET} from '../../Actons/types';
 
 function BestSelling({navigation}) {
   const dispatch = useDispatch();
@@ -11,47 +12,75 @@ function BestSelling({navigation}) {
       image: require('../../Assets/images/best5.jpg'),
       name: 'Olive Oil',
       descShort: '1 pack - 1kg',
-      price: '$10',
+      descLong:
+        'Paprika is a ground spice made from dried red fruits of sweeter varieties of the plant Capsicum annuum. It is traditionally made from Capsicum annuum varietals in the Longum group',
+      price: 10,
+      qty: 1,
+      rating: 5,
     },
     {
       id: Math.random().toString(),
       image: require('../../Assets/images/best2.png'),
       name: 'Olive Oil Small',
       descShort: 'Italian  - 700gr',
-      price: '$5',
+      descLong:
+        'Paprika is a ground spice made from dried red fruits of sweeter varieties of the plant Capsicum annuum. It is traditionally made from Capsicum annuum varietals in the Longum group',
+      price: 20,
+      qty: 1,
+      rating: 4,
     },
     {
       id: Math.random().toString(),
       image: require('../../Assets/images/best4.png'),
       name: 'Olive Oil Large',
-      descShort: 'Extra large - 1.3kg',
-      price: '$14',
+      descShort: 'Extra large-1.3kg',
+      descLong:
+        'Paprika is a ground spice made from dried red fruits of sweeter varieties of the plant Capsicum annuum. It is traditionally made from Capsicum annuum varietals in the Longum group',
+      price: 5,
+      qty: 1,
+      rating: 3,
     },
   ];
 
   const renderItem = ({item}) => {
     const addToBasket = () => {
       dispatch({
-        type: 'ADD_TO_BASKET',
+        type: ADD_TO_BASKET,
         itemData: {
           id: item.id,
           image: item.image,
           name: item.name,
           descShort: item.descShort,
           price: item.price,
+          qty: item.qty,
+          descLong: item.descLong,
+          rating: item.rating,
         },
       });
     };
+
     return (
       <View style={styles.bestContainer}>
-        <Image source={item.image} style={styles.img} />
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('selectedItem', {
+              id: item.id,
+              image: item.image,
+              name: item.name,
+              descShort: item.descShort,
+              price: item.price,
+              qty: item.qty,
+              descLong: item.descLong,
+              rating: item.rating,
+            })
+          }>
+          <Image source={item.image} style={styles.img} />
+        </TouchableOpacity>
         <Text style={styles.itemName}>{item.name}</Text>
         <Text style={styles.itemDesc}>{item.descShort}</Text>
-        <Text style={styles.itemPrice}>{item.price}</Text>
-        <TouchableOpacity style={styles.addBtn}>
-          <Text style={styles.addBtnText} onPress={addToBasket}>
-            Add to Cart
-          </Text>
+        <Text style={styles.itemPrice}>${item.price}</Text>
+        <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
+          <Text style={styles.addBtnText}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     );
@@ -73,42 +102,3 @@ function BestSelling({navigation}) {
 }
 
 export default BestSelling;
-
-// <ScrollView horizontal>
-//         <View style={styles.bestContainer}>
-//           <Image
-//             source={require('../../Assets/images/best5.jpg')}
-//             style={styles.img}
-//           />
-//           <Text style={styles.itemName}>Olive Oil Large</Text>
-//           <Text style={styles.itemDesc}>1 pack -1kg</Text>
-//           <Text style={styles.itemPrice}>$10</Text>
-//         </View>
-//         <View style={styles.bestContainer}>
-//           <Image
-//             source={require('../../Assets/images/best5.jpg')}
-//             style={styles.img}
-//           />
-//           <Text style={styles.itemName}>Olive Oil Large</Text>
-//           <Text style={styles.itemDesc}>1 pack -1kg</Text>
-//           <Text style={styles.itemPrice}>$10</Text>
-//         </View>
-//         <View style={styles.bestContainer}>
-//           <Image
-//             source={require('../../Assets/images/best5.jpg')}
-//             style={styles.img}
-//           />
-//           <Text style={styles.itemName}>Olive Oil Large</Text>
-//           <Text style={styles.itemDesc}>1 pack -1kg</Text>
-//           <Text style={styles.itemPrice}>$10</Text>
-//         </View>
-//         <View style={styles.bestContainer}>
-//           <Image
-//             source={require('../../Assets/images/best5.jpg')}
-//             style={styles.img}
-//           />
-//           <Text style={styles.itemName}>Olive Oil Large</Text>
-//           <Text style={styles.itemDesc}>1 pack -1kg</Text>
-//           <Text style={styles.itemPrice}>$10</Text>
-//         </View>
-//       </ScrollView>

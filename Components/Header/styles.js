@@ -31,6 +31,14 @@ const styles = StyleSheet.create({
   icon: {
     color: 'rgb(28, 202, 96)',
   },
+  notifierContainer: {
+    backgroundColor: 'rgb(50, 50, 50)',
+    borderRadius: 30,
+    marginBottom: -11,
+    marginLeft: 20,
+    marginRight: -10,
+    zIndex: 1,
+  },
 });
 
 export default styles;

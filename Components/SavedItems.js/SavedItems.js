@@ -8,39 +8,13 @@ import {
   ADD_TO_BASKET,
   INCREMENT,
   DECREMENT,
-  REMOVE_FROM_SAVED,
-  INC,
-  DEC,
-  SAVED_NOTIFIER_REMOVE,
 } from '../../Actons/types';
 
-function CartItems({name, price, image, descShort, id, qty, saved}) {
+function SavedItems({name, price, image, descShort, id, qty}) {
   const dispatch = useDispatch();
-
-  const removeFromList = () => {
-    if (saved) {
-      dispatch({type: REMOVE_FROM_SAVED, id: id});
-      dispatch({type: SAVED_NOTIFIER_REMOVE});
-    } else {
-      dispatch({type: REMOVE_FROM_BASKET, id: id});
-      dispatch({type: 'QTY_REMOVE'});
-    }
-  };
-
-  const Dec = () => {
-    if (saved) {
-      dispatch({type: DEC, id: id});
-    } else {
-      dispatch({type: DECREMENT, id: id});
-    }
-  };
-
-  const Inc = () => {
-    if (saved) {
-      dispatch({type: INC, id: id});
-    } else {
-      dispatch({type: INCREMENT, id: id});
-    }
+  const removeFromBasket = () => {
+    dispatch({type: REMOVE_FROM_BASKET, id: id});
+    dispatch({type: 'QTY_REMOVE'});
   };
 
   return (
@@ -61,17 +35,21 @@ function CartItems({name, price, image, descShort, id, qty, saved}) {
 
       <View>
         <View style={styles.addDelContainer}>
-          <TouchableOpacity style={styles.qBtn} onPress={Dec}>
+          <TouchableOpacity
+            style={styles.qBtn}
+            onPress={() => dispatch({type: DECREMENT, id: id})}>
             <Ionicon name="remove" size={26} />
           </TouchableOpacity>
 
           <Text style={styles.counter}>{qty}</Text>
-          <TouchableOpacity style={styles.qBtn} onPress={Inc}>
+          <TouchableOpacity
+            style={styles.qBtn}
+            onPress={() => dispatch({type: INCREMENT, id: id})}>
             <Ionicon name="add-outline" size={26} />
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={removeFromList} style={styles.remove}>
+        <TouchableOpacity onPress={removeFromBasket} style={styles.remove}>
           <Text style={styles.removeText}>Remove</Text>
         </TouchableOpacity>
       </View>
@@ -79,4 +57,4 @@ function CartItems({name, price, image, descShort, id, qty, saved}) {
   );
 }
 
-export default CartItems;
+export default SavedItems;

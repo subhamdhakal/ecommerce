@@ -13,13 +13,15 @@ import Cans from '../../Components/Cans/Cans';
 import Header from '../../Components/Header/Header';
 import MP from '../../Components/MP/MP';
 import TopBanner from '../../Components/TopBanner/TopBanner';
+import {useSelector} from 'react-redux';
 
 function Home({navigation}) {
+  const searching = useSelector((state) => state.searching);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'android' ? null : 'padding'}
       style={styles.container}>
-      <View style={{flex: 0.08}}>
+      <View style={searching ? styles.header : styles.header1}>
         <Header navigation={navigation} />
       </View>
 
@@ -56,5 +58,11 @@ const styles = StyleSheet.create({
   category: {
     height: 330,
     marginBottom: 20,
+  },
+  header: {
+    flex: 0.1,
+  },
+  header1: {
+    flex: 0.08,
   },
 });

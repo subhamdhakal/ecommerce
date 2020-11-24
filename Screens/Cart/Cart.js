@@ -1,19 +1,23 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
 import Header from '../../Components/Header/Header';
 import {useSelector} from 'react-redux';
 import CartItems from '../../Components/CartItems/CartItems';
+import styles from './styles';
+import {getBasketTotal} from '../../Reducer/Reducer';
+import {startClock} from 'react-native-reanimated';
+
 function Cart({navigation}) {
   const basket = useSelector((state) => state.basket);
-  console.log(basket);
 
   return (
-    <View style={{flex: 1}}>
-      <View style={{flex: 0.08}}>
+    <View style={styles.container}>
+      <View style={styles.header}>
         <Header navigation={navigation} iconChange={true} />
       </View>
-      <View style={{flex: 0.92}}>
-        <ScrollView>
+      <View style={styles.body}>
+        <ScrollView bounces>
+          <Text style={styles.title}>Your Cart</Text>
           {basket.map((item, index) => (
             <CartItems
               id={item.id}
@@ -21,8 +25,30 @@ function Cart({navigation}) {
               name={item.name}
               price={item.price}
               descShort={item.descShort}
+              qty={item.qty}
             />
           ))}
+          {basket?.length > 0 ? (
+            <View style={styles.totalContainer}>
+              <View style={styles.lineBreak} />
+              <View style={styles.buyContainer}>
+                <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                  Total: $<Text>{getBasketTotal(basket)}</Text>
+                </Text>
+                <TouchableOpacity style={styles.buyBtn}>
+                  <Text style={styles.buyBtnText}>Buy Now</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ) : (
+            <View style={styles.emptyContainer}>
+              <Image
+                source={require('../../Assets/images/tobe.png')}
+                style={styles.emptyImage}
+              />
+              <Text style={styles.emptyText}>Your cart is empty</Text>
+            </View>
+          )}
         </ScrollView>
       </View>
     </View>

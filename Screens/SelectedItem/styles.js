@@ -11,23 +11,25 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 0.92,
-    marginHorizontal: 15,
   },
   image: {
-    height: 380,
+    height: 320,
     width: width,
     resizeMode: 'contain',
   },
   details: {
     flex: 1,
+    marginHorizontal: 15,
   },
   name: {
-    fontSize: 18,
-    marginVertical: 10,
+    fontSize: 20,
+    marginTop: 10,
+    fontWeight: '700',
   },
   price: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '700',
+    marginTop: 10,
   },
   qtyContainer: {
     flexDirection: 'row',
@@ -50,19 +52,19 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: 'rgb(23, 23, 23)',
     paddingHorizontal: width * 0.163,
-    paddingVertical: 5,
+    paddingVertical: 12,
     justifyContent: 'center',
   },
   btns: {
     backgroundColor: 'rgb(28, 200, 96)',
     paddingHorizontal: width * 0.163,
-    paddingVertical: 5,
+    paddingVertical: 12,
     justifyContent: 'center',
+    zIndex: 1,
   },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    flex: 0.06,
   },
 });
 

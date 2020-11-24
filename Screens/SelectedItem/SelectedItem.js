@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Image,
@@ -9,79 +9,126 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import Header from '../../Components/Header/Header';
 import styles from './styles';
 import {useSelector, useDispatch} from 'react-redux';
+import {
+  ADD_TO_BASKET,
+  ADD_TO_SAVED,
+  REMOVE_FROM_SAVED,
+  SAVED_NOTIFIER_REMOVE,
+} from '../../Actons/types';
 
-function SelectedItem({navigation}) {
-  const DATA = [
-    {
-      img: require('../../Assets/images/best3.png'),
-    },
-    {
-      img: require('../../Assets/images/best.png'),
-    },
-  ];
-
-  const counter = useSelector((state) => state.counter);
+function SelectedItem({navigation, route}) {
   const dispatch = useDispatch();
-  const renderItem = ({item}) => {
-    return <Image source={item.img} style={styles.image} />;
+  const saved = useSelector((state) => state.saved);
+
+  const {
+    id,
+    image,
+    descShort,
+    price,
+    qty,
+    name,
+    descLong,
+    rating,
+  } = route.params;
+
+  const [heart, setHeart] = useState(true);
+
+  const addToSaved = () => {
+    if (heart) {
+      dispatch({
+        type: ADD_TO_SAVED,
+        itemData: {
+          id: id,
+          image: image,
+          name: name,
+          descShort: descShort,
+          price: price,
+          qty: qty,
+          descLong: descLong,
+          rating: rating,
+        },
+      });
+    } else {
+      // dispatch({type: REMOVE_FROM_SAVED, id: id});
+      // dispatch({type: SAVED_NOTIFIER_REMOVE});
+    }
+    setHeart(!heart);
   };
+  const addToBasket = () => {
+    dispatch({
+      type: ADD_TO_BASKET,
+      itemData: {
+        id: id,
+        image: image,
+        name: name,
+        descShort: descShort,
+        price: price,
+        qty: qty,
+        descLong: descLong,
+        rating: rating,
+      },
+    });
+    navigation.navigate('cart');
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'android' ? null : 'padding'}
       style={styles.container}>
       <View style={styles.header}>
-        <Header iconChange={true} />
+        <Header iconChange={true} navigation={navigation} />
       </View>
       <View style={styles.body}>
-        <ScrollView>
-          <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            pagingEnabled
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          />
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{paddingBottom: 40}}>
+          <Image source={image} style={styles.image} />
+
           <View style={styles.details}>
-            <Text style={styles.name}>Paprika</Text>
-            <Text style={styles.price}>W 5500</Text>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={styles.name}>{name}</Text>
+              <TouchableOpacity onPress={addToSaved}>
+                <Ionicon
+                  name="heart"
+                  size={34}
+                  style={{
+                    marginTop: 5,
+                    marginRight: 10,
+                  }}
+                  color="green"
+                />
+              </TouchableOpacity>
+            </View>
+
+            <Text>{descShort}</Text>
 
             <View style={styles.qtyContainer}>
-              <Text style={styles.price}>Quantity</Text>
+              <Text style={styles.price}>${price}</Text>
               <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity
-                  style={styles.qBtn}
-                  onPress={() => dispatch({type: 'REMOVE'})}>
-                  <Ionicon name="remove" size={24} />
-                </TouchableOpacity>
-                <Text style={{fontSize: 18}}>{counter}</Text>
-                <TouchableOpacity
-                  style={styles.qBtn}
-                  onPress={() => dispatch({type: 'ADD'})}>
-                  <Ionicon name="add-outline" size={24} />
-                </TouchableOpacity>
+                <Text>⭐</Text>
+                <Text>⭐</Text>
+                <Text>⭐</Text>
               </View>
             </View>
 
             <Text style={styles.desc}>Description</Text>
-            <Text>
-              Paprika is a ground spice made from dried red fruits of sweeter
-              varieties of the plant Capsicum annuum. It is traditionally made
-              from Capsicum annuum varietals in the Longum group
-            </Text>
+            <Text>{descLong}</Text>
           </View>
         </ScrollView>
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={{color: 'white', fontSize: 18}}>Add to Cart</Text>
+        <TouchableOpacity style={styles.btn} onPress={addToBasket}>
+          <Text style={{color: 'white', fontSize: 20}}>Add to Cart</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btns}>
-          <Text style={{color: 'white', fontSize: 18}}>Buy Now</Text>
+          <Text style={{color: 'white', fontSize: 20}}>Buy Now</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
