@@ -8,18 +8,23 @@ import CheckBox from '@react-native-community/checkbox';
 import styles from './styles';
 
 function Payment({navigation, route}) {
-  const {id, qty, price, name} = route.params;
+  const {fromSaved} = route.params;
   const [isSelected, setSelection] = useState(false);
+  const [saveAddr, setSaveAddr] = useState(false);
+  const [saveShipment, setSaveShipment] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   return (
     <View>
       <ScrollView>
         <ProgressSteps>
-          <ProgressStep label="Address">
-            <StepAddress />
+          <ProgressStep label="Address" onNext={() => setSaveAddr(!saveAddr)}>
+            <StepAddress saveAddr={saveAddr} />
           </ProgressStep>
 
-          <ProgressStep label="Shipment Method">
+          <ProgressStep
+            label="Shipment Method"
+            onNext={() => setSaveShipment(true)}>
             <Shipment />
           </ProgressStep>
           <ProgressStep label="Order Details">

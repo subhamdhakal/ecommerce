@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
     borderColor: 'rgb(200, 200, 200)',
     marginVertical: 10,
   },
+  title: {
+    color: 'rgb(46, 64, 60)',
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 20,
+  },
 });
 
 export default styles;
