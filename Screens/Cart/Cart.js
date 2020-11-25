@@ -5,11 +5,23 @@ import {useSelector} from 'react-redux';
 import CartItems from '../../Components/CartItems/CartItems';
 import styles from './styles';
 import {getBasketTotal} from '../../Reducer/Reducer';
-import {startClock} from 'react-native-reanimated';
 
 function Cart({navigation}) {
   const basket = useSelector((state) => state.basket);
-
+  const passParam = () => {
+    basket.map((item) => {
+      (id = item.id),
+        (name = item.name),
+        (qty = item.qty),
+        (price = item.price);
+    });
+    navigation.navigate('payment', {
+      id: id,
+      name: name,
+      qty: qty,
+      price: price,
+    });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -35,7 +47,7 @@ function Cart({navigation}) {
                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>
                   Total: $<Text>{getBasketTotal(basket)}</Text>
                 </Text>
-                <TouchableOpacity style={styles.buyBtn}>
+                <TouchableOpacity style={styles.buyBtn} onPress={passParam}>
                   <Text style={styles.buyBtnText}>Buy Now</Text>
                 </TouchableOpacity>
               </View>

@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TextInput, ScrollView} from 'react-native';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
+import OrderDetails from '../../Components/OrderDetails/OrderDetails';
 import Shipment from '../../Components/Shipment/Shipment';
 import StepAddress from '../../Components/StepAddress/StepAddress';
+import CheckBox from '@react-native-community/checkbox';
+import styles from './styles';
 
-function Address() {
+function Payment({navigation, route}) {
+  const {id, qty, price, name} = route.params;
+  const [isSelected, setSelection] = useState(false);
+
   return (
     <View>
       <ScrollView>
@@ -17,13 +23,17 @@ function Address() {
             <Shipment />
           </ProgressStep>
           <ProgressStep label="Order Details">
-            <View>
-              <Text>Page one</Text>
-            </View>
+            <OrderDetails />
           </ProgressStep>
           <ProgressStep label="Payment">
-            <View>
-              <Text>Page one</Text>
+            <View style={styles.checkboxContainer}>
+              <CheckBox
+                value={isSelected}
+                onValueChange={() => setSelection(!isSelected)}
+                style={styles.checkbox}
+                onAnimationType="bounce"
+              />
+              <Text>Direct Wire Transfer</Text>
             </View>
           </ProgressStep>
         </ProgressSteps>
@@ -32,4 +42,4 @@ function Address() {
   );
 }
 
-export default Address;
+export default Payment;

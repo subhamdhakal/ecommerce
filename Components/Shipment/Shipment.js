@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import styles from './styles';
 
 const Shipment = () => {
   const [isSelected, setSelection] = useState(true);
@@ -17,7 +18,7 @@ const Shipment = () => {
 
         <Text style={styles.label}>Standart Shipment</Text>
       </View>
-      <View style={{marginLeft: 70}}>
+      <View style={{marginLeft: 50}}>
         <Text style={{fontSize: 14, color: 'rgb(60, 60, 60)'}}>
           Delivery fee : $5
         </Text>
@@ -36,7 +37,7 @@ const Shipment = () => {
         />
         <Text style={styles.label}>Express Shipment</Text>
       </View>
-      <View style={{marginLeft: 135}}>
+      <View style={{marginLeft: 50}}>
         <Text style={{fontSize: 14, color: 'rgb(60, 60, 60)'}}>
           Delivery fee : $10
         </Text>
@@ -48,23 +49,5 @@ const Shipment = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-  },
-  checkboxContainer: {
-    flexDirection: 'row',
-    //     backgroundColor: 'red',
-  },
-  checkbox: {
-    alignSelf: 'center',
-  },
-  label: {
-    margin: 8,
-  },
-});
 
 export default Shipment;
