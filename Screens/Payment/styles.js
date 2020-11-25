@@ -24,8 +24,9 @@ const styles = StyleSheet.create({
   },
   checkboxMainContainer: {
     justifyContent: 'center',
-    marginVertical: 50,
-    paddingLeft: 70,
+    marginTop: 20,
+    marginBottom: 40,
+    paddingLeft: 30,
   },
   checkLabel: {
     margin: 3,
@@ -40,6 +41,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'rgb(60, 60, 60)',
   },
+  paymentCheckboxContainer: {
+    flexDirection: 'row',
+    marginVertical: 20,
+    // marginHorizontal: 10,
+  },
+  wire: {
+    marginRight: 25,
+    marginLeft: 10,
+  },
+  wireTransferText: {
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  home: {marginTop: 20, marginLeft: 30, flexDirection: 'row'},
 });
 
 export default styles;

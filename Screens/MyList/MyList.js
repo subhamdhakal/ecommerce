@@ -36,7 +36,11 @@ function MyList({navigation}) {
                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>
                   Total: $<Text>{getSavedTotal(saved)}</Text>
                 </Text>
-                <TouchableOpacity style={styles.buyBtn}>
+                <TouchableOpacity
+                  style={styles.buyBtn}
+                  onPress={() =>
+                    navigation.navigate('payment', {fromSaved: true})
+                  }>
                   <Text style={styles.buyBtnText}>Buy Now</Text>
                 </TouchableOpacity>
               </View>

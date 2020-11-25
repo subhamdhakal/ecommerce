@@ -57,9 +57,6 @@ function SelectedItem({navigation, route}) {
           rating: rating,
         },
       });
-    } else {
-      // dispatch({type: REMOVE_FROM_SAVED, id: id});
-      // dispatch({type: SAVED_NOTIFIER_REMOVE});
     }
     setHeart(!heart);
   };
@@ -136,7 +133,9 @@ function SelectedItem({navigation, route}) {
         <TouchableOpacity style={styles.btn} onPress={addToBasket}>
           <Text style={{color: 'white', fontSize: 20}}>Add to Cart</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btns}>
+        <TouchableOpacity
+          style={styles.btns}
+          onPress={() => navigation.navigate('payment', {fromSaved: true})}>
           <Text style={{color: 'white', fontSize: 20}}>Buy Now</Text>
         </TouchableOpacity>
       </View>

@@ -1,44 +1,45 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text} from 'react-native';
 import styles from './styles';
 import {useSelector} from 'react-redux';
-import {getBasketTotal} from '../../Reducer/Reducer';
-function OrderDetails({}) {
-  let arr = [];
-  arr.push(id, price, qty, name);
+import {getBasketTotal, getSavedTotal} from '../../Reducer/Reducer';
+
+function OrderDetails({deliveryFee, fromSaved}) {
   const basket = useSelector((state) => state.basket);
+  const saved = useSelector((state) => state.saved);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Order Details</Text>
-      {basket.map((item) => (
-        <View style={{flexDirection: 'row', marginVertical: 5}}>
-          <Text style={styles.itemName}>{item.name} x</Text>
-          <Text style={styles.itemName}>{item.qty} : </Text>
-          <Text style={styles.itemPrice}>${item.price}</Text>
-        </View>
-      ))}
-      <Text style={[styles.itemName, {marginVertical: 5}]}>
-        Tax : <Text style={styles.itemPrice}>0</Text>
+      {fromSaved == true
+        ? saved.map((item) => (
+            <View style={styles.itemContainer}>
+              <Text style={styles.itemName}>{item.name} x</Text>
+              <Text style={styles.itemName}>{item.qty} : </Text>
+              <Text style={styles.itemPrice}>${item.price}</Text>
+            </View>
+          ))
+        : basket.map((item) => (
+            <View style={styles.itemContainer}>
+              <Text style={styles.itemName}>{item.name} x</Text>
+              <Text style={styles.itemName}>{item.qty} : </Text>
+              <Text style={styles.itemPrice}>${item.price}</Text>
+            </View>
+          ))}
+      <Text style={styles.tax}>
+        Tax : <Text style={styles.itemPrice}>$0</Text>
       </Text>
-      <Text style={[styles.itemName, {marginVertical: 5}]}>
-        Delivery Fee : <Text style={styles.itemPrice}>$5</Text>
+      <Text style={styles.tax}>
+        Delivery Fee : <Text style={styles.itemPrice}>${deliveryFee}</Text>
       </Text>
-      <View
-        style={{
-          width: '100%',
-          height: 2,
-          backgroundColor: 'black',
-          marginTop: 20,
-        }}
-      />
-      <Text
-        style={{
-          fontSize: 18,
-          color: 'rgb(46, 64, 60)',
-          fontWeight: '700',
-          marginVertical: 15,
-        }}>
-        Total : <Text style={{color: 'black'}}>${getBasketTotal(basket)}</Text>
+      <View style={styles.lineBreaker} />
+      <Text style={styles.total}>
+        Total :{' '}
+        <Text style={{color: 'black'}}>
+          $
+          {fromSaved == true
+            ? deliveryFee + getSavedTotal(saved)
+            : deliveryFee + getBasketTotal(basket)}
+        </Text>
       </Text>
     </View>
   );

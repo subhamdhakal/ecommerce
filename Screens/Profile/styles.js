@@ -3,39 +3,47 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'rgb(255,255,255)',
   },
   header: {
-    flex: 1,
+    flex: 1.1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgb(28, 202, 97)',
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
   avatar: {
     width: 100,
     height: 100,
-    borderRadius: 50,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgb(134, 134, 134)',
   },
   logoutBtn: {
     flexDirection: 'row',
     alignSelf: 'center',
     marginTop: 15,
-    backgroundColor: 'rgb(28, 200, 96)',
   },
   logText: {
     fontSize: 18,
     fontWeight: '700',
     marginRight: 5,
-    color: 'white',
+    color: 'rgb(28, 200, 95)',
   },
   body: {
     flex: 2,
   },
+  itemsContainer: {
+    flexDirection: 'row',
+    paddingVertical: 18,
+    paddingHorizontal: 15,
+    alignItems: 'center',
+    borderColor: 'black',
+    borderBottomWidth: 0.8,
+    justifyContent: 'space-between',
+  },
   items: {
     flexDirection: 'row',
-    borderColor: 'black',
-    borderBottomWidth: 1,
-    paddingVertical: 5,
-    paddingHorizontal: 15,
     alignItems: 'center',
   },
   itemText: {

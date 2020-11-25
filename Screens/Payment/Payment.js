@@ -1,15 +1,21 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 import OrderDetails from '../../Components/OrderDetails/OrderDetails';
-import Shipment from '../../Components/Shipment/Shipment';
-import StepAddress from '../../Components/StepAddress/StepAddress';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {SAVE_ADDRESS} from '../../Actons/types';
+import Ionicon from 'react-native-vector-icons/Ionicons';
 
 function Payment({navigation, route}) {
+  const {fromSaved} = route.params;
   const dispatch = useDispatch();
   const [isSelected, setSelection] = useState(false);
   const [deliveryFee, setDeliveryFee] = useState(null);
@@ -25,6 +31,7 @@ function Payment({navigation, route}) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [comments, setComments] = useState('');
   const [submit, setSubmit] = useState(false);
+  const [wire, setWire] = useState(true);
 
   const onNextButton = () => {
     dispatch({
@@ -43,19 +50,24 @@ function Payment({navigation, route}) {
       },
     });
   };
+  const delivery = () => {
+    if (shipment) {
+      setDeliveryFee(5);
+    } else {
+      setDeliveryFee(10);
+    }
+  };
 
-  if (shipment) {
-    setDeliveryFee(5);
-  } else {
-    setDeliveryFee(10);
-  }
-
-  console.log(deliveryFee);
   return (
     <View>
       <ScrollView>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.home}>
+          <Ionicon name="home" size={34} color="rgb(28, 200, 95)" />
+        </TouchableOpacity>
         <ProgressSteps>
-          <ProgressStep checkLabel="Address" onNext={onNextButton}>
+          <ProgressStep label="Address" onNext={onNextButton}>
             <View style={styles.addressContainer}>
               <Text style={styles.title}>Address</Text>
               <TextInput
@@ -151,9 +163,10 @@ function Payment({navigation, route}) {
             </View>
           </ProgressStep>
 
-          <ProgressStep
-            checkLabel="Shipment Method"
-            onNext={() => setSaveShipment(true)}>
+          <ProgressStep label="Shipment Method" onNext={delivery}>
+            <Text style={[styles.title, {marginHorizontal: 30, marginTop: 20}]}>
+              Shipment Method
+            </Text>
             <View style={styles.checkboxMainContainer}>
               <View style={styles.checkboxContainer}>
                 <CheckBox
@@ -163,6 +176,7 @@ function Payment({navigation, route}) {
                 />
                 <Text style={styles.checkLabel}>Standart Shipment</Text>
               </View>
+
               <View style={styles.checkboxDetailsContainer}>
                 <Text style={styles.checkboxText}>Delivery fee : $5</Text>
                 <Text style={styles.checkboxText}>
@@ -178,6 +192,7 @@ function Payment({navigation, route}) {
                 />
                 <Text style={styles.checkLabel}>Express Shipment</Text>
               </View>
+
               <View style={styles.checkboxDetailsContainer}>
                 <Text style={styles.checkboxText}>Delivery fee : $10</Text>
                 <Text style={styles.checkboxText}>
@@ -186,18 +201,32 @@ function Payment({navigation, route}) {
               </View>
             </View>
           </ProgressStep>
-          <ProgressStep checkLabel="Order Details">
-            <OrderDetails />
+          <ProgressStep label="Order Details">
+            <OrderDetails deliveryFee={deliveryFee} fromSaved={fromSaved} />
           </ProgressStep>
-          <ProgressStep checkLabel="Payment" on>
-            <View style={styles.checkboxContainer}>
-              <CheckBox
-                value={isSelected}
-                onValueChange={() => setSelection(!isSelected)}
-                style={styles.checkbox}
-                onAnimationType="bounce"
-              />
-              <Text>Direct Wire Transfer</Text>
+          <ProgressStep
+            label="Payment"
+            onSubmit={wire == false && alert('Choose payment method')}>
+            <View style={styles.addressContainer}>
+              <Text style={styles.title}>Payment Method</Text>
+              <View style={styles.paymentCheckboxContainer}>
+                <CheckBox
+                  value={wire}
+                  onValueChange={() => setWire(!wire)}
+                  style={styles.checkbox}
+                  onAnimationType="bounce"
+                />
+                <View style={styles.wire}>
+                  <Text style={styles.wireTransferText}>
+                    Direct Wire Transfer
+                  </Text>
+                  <Text style={styles.wireDetails}>
+                    Please make direct wire transfer to our bank account. Once
+                    the transaction is clearified , we will ship your prodects
+                    immadiately.
+                  </Text>
+                </View>
+              </View>
             </View>
           </ProgressStep>
         </ProgressSteps>

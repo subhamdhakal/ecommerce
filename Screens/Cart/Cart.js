@@ -36,7 +36,9 @@ function Cart({navigation}) {
                 </Text>
                 <TouchableOpacity
                   style={styles.buyBtn}
-                  onPress={() => navigation.navigate('payment')}>
+                  onPress={() =>
+                    navigation.navigate('payment', {fromSaved: false})
+                  }>
                   <Text style={styles.buyBtnText}>Buy Now</Text>
                 </TouchableOpacity>
               </View>
