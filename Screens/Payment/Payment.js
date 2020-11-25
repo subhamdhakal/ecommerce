@@ -30,7 +30,7 @@ function Payment({navigation, route}) {
           <ProgressStep label="Order Details">
             <OrderDetails />
           </ProgressStep>
-          <ProgressStep label="Payment">
+          <ProgressStep label="Payment" on>
             <View style={styles.checkboxContainer}>
               <CheckBox
                 value={isSelected}

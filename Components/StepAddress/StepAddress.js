@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, TextInput, Text} from 'react-native';
 import styles from './styles';
+import {useDispatch, useSelector} from 'react-redux';
+import {SAVE_ADDRESS} from '../../Actons/types';
 
 function StepAddress({saveAddr}) {
-  if (saveAddr) {
-    console.log('Next clicked . Save : true');
-  }
+  const address = useSelector((state) => state.address);
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [company, setCompany] = useState('');
@@ -16,7 +17,27 @@ function StepAddress({saveAddr}) {
   const [country, setCountry] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [comments, setComments] = useState('');
-  console.log('lastname : ', lastName);
+
+  if (saveAddr) {
+    for (let i = 0; i <= 1; i++) {
+      dispatch({
+        type: SAVE_ADDRESS,
+        payload: {
+          firstName: firstName,
+          lastName: lastName,
+          company: company,
+          addr1: addr1,
+          addr2: addr2,
+          city: city,
+          country: country,
+          zipCode: zipCode,
+          phoneNumber: phoneNumber,
+          comments: comments,
+        },
+      });
+    }
+  }
+  console.log(address);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Address</Text>

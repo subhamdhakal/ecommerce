@@ -8,12 +8,13 @@ import {
   SAVED_NOTIFIER_REMOVE,
   INC,
   DEC,
+  SAVE_ADDRESS,
 } from '../Actons/types';
 
 const initialState = {
   basket: [],
   user: null,
-  addr: null,
+  address: [],
   notifier: 0,
   savedNotifier: 0,
   saved: [],
@@ -48,6 +49,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         saved: [...state.saved, action.itemData],
         savedNotifier: state.savedNotifier + 1,
+      };
+    case SAVE_ADDRESS:
+      return {
+        ...state,
+        address: [...state.address, action.payload],
       };
 
     case INCREMENT:

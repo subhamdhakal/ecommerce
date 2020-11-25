@@ -7,3 +7,4 @@ export const REMOVE_FROM_SAVED = 'REMOVE_FROM_SAVED';
 export const SAVED_NOTIFIER_REMOVE = 'SAVED_NOTIFIER_REMOVE';
 export const INC = 'INC';
 export const DEC = 'DEC';
+export const SAVE_ADDRESS = 'SAVED_ADDRESS';
