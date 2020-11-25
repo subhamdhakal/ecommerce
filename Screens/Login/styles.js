@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: 'rgb(28, 202, 97)',
   },
+  errorMessage: {
+    color: 'red',
+    textAlign: 'center',
+    marginBottom: 5,
+    fontSize: 16,
+  },
   image: {
     flex: 1,
     alignSelf: 'center',

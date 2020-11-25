@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,11 +8,35 @@ import {
   Image,
   Platform,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import styles from './styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 function Login({navigation}) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleLogin = () => {
+    if ((email == '' || null) && (password == '' || null)) {
+      setErrorMessage('Please type your email and password.');
+    } else {
+      auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => navigation.navigate('home'))
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            setErrorMessage('That email address is already in use!');
+          } else if (error.code === 'auth/invalid-email') {
+            setErrorMessage('That email address is invalid!');
+          } else if (error.code == 'auth/user-not-found') {
+            setErrorMessage('No user found for this email.');
+          }
+        });
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'android' ? null : 'padding'}
@@ -29,10 +53,17 @@ function Login({navigation}) {
           style={styles.image}
         />
       </View>
+
       <View style={styles.inputContainer}>
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
         <View style={styles.inputWrapper}>
           <FontAwesome name="envelope-o" size={20} style={styles.inputIcon} />
-          <TextInput placeholder="Email" style={styles.inputEmail} />
+          <TextInput
+            placeholder="Email"
+            style={styles.inputEmail}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
         </View>
 
         <View style={styles.inputWrapper}>
@@ -41,12 +72,12 @@ function Login({navigation}) {
             placeholder="Password"
             secureTextEntry
             style={styles.inputPass}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
           />
         </View>
 
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => navigation.navigate('home')}>
+        <TouchableOpacity style={styles.btn} onPress={handleLogin}>
           <Text style={styles.btnText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity

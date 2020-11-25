@@ -4,16 +4,17 @@ const {width, height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
   top: {flex: 1},
+
   topNav: {
     flex: 0.4,
   },
   icon: {
     marginLeft: 30,
     marginTop: 30,
-    color: 'rgb(28, 202, 97)',
+    color: 'red',
   },
   image: {
     flex: 1,
@@ -22,43 +23,44 @@ const styles = StyleSheet.create({
     width: width * 0.45,
   },
   inputContainer: {
-    flex: 1.8,
+    flex: 2,
     alignItems: 'center',
   },
   btn: {
     marginTop: width * 0.15,
     backgroundColor: 'rgb(28, 202, 97)',
     borderRadius: 20,
-    paddingVertical: 5,
-    paddingHorizontal: width * 0.28,
+    width: width * 0.75,
+    paddingVertical: 10,
   },
   btnText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  errorMessage: {
+    color: 'red',
+    textAlign: 'center',
+    marginBottom: 5,
+    fontSize: 16,
   },
   inputWrapper: {
     flexDirection: 'row',
     marginVertical: 5,
   },
-  inputPass: {
-    borderColor: 'black',
+  input: {
+    backgroundColor: 'rgb(245, 245, 245)',
+    width: width * 0.75,
+    borderColor: 'rgb(198, 198, 198)',
     borderWidth: 1,
-    paddingVertical: 4,
-    paddingLeft: 40,
-    paddingRight: width * 0.45,
     borderRadius: 30,
-  },
-  inputEmail: {
-    paddingRight: width * 0.48,
-    borderRadius: 30,
-    borderColor: 'black',
-    borderWidth: 1,
-    paddingLeft: 55,
-    paddingVertical: 4,
+    paddingLeft: 20,
   },
   inputIcon: {
     marginRight: -30,
     alignSelf: 'center',
+    color: 'red',
   },
   forgot: {
     marginVertical: 15,

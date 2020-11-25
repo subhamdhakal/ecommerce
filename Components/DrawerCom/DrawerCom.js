@@ -2,9 +2,13 @@ import React from 'react';
 import {View, Image, Text} from 'react-native';
 import styles from './styles';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
+import {useSelector} from 'react-redux';
+import auth from '@react-native-firebase/auth';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 function DrawerCom({navigation, props}) {
+  const user = useSelector((state) => state.user);
+  console.log('user', user);
   return (
     <>
       <View style={styles.container}>
@@ -13,18 +17,22 @@ function DrawerCom({navigation, props}) {
           source={require('../../Assets/images/avatar.jpg')}
         />
 
-        <View style={styles.textContainer}>
-          <Text
-            style={styles.text}
-            onPress={() => navigation.navigate('signup')}>
-            Guest |{' '}
-          </Text>
-          <Text
-            style={styles.text}
-            onPress={() => navigation.navigate('login')}>
-            Sign In
-          </Text>
-        </View>
+        {auth().currentUser ? (
+          <Text>ok</Text>
+        ) : (
+          <View style={styles.textContainer}>
+            <Text
+              style={styles.text}
+              onPress={() => navigation.navigate('signup')}>
+              Guest |{' '}
+            </Text>
+            <Text
+              style={styles.text}
+              onPress={() => navigation.navigate('login')}>
+              Sign In
+            </Text>
+          </View>
+        )}
       </View>
       <DrawerContentScrollView {...props}>
         <View

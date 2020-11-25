@@ -9,11 +9,12 @@ import {
   INC,
   DEC,
   SAVE_ADDRESS,
+  ADD_USER,
 } from '../Actons/types';
 
 const initialState = {
   basket: [],
-  user: null,
+  user: [],
   address: [],
   notifier: 0,
   savedNotifier: 0,
@@ -132,10 +133,10 @@ const rootReducer = (state = initialState, action) => {
             : item,
         ),
       };
-    case 'SET_USER':
+    case ADD_USER:
       return {
         ...state,
-        user: action.user,
+        user: action.payload,
       };
     case 'EMPTY_BASKET':
       return {

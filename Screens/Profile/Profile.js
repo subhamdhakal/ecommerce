@@ -4,12 +4,14 @@ import styles from './styles';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useSelector} from 'react-redux';
+import auth from '@react-native-firebase/auth';
 import Login from '../Login/Login';
+import AuthNavigator from '../../Navigation/AuthNavigator';
 
 function Profile({navigation}) {
   const user = useSelector((state) => state.user);
-  if (!user) {
-    return <Login navigation={navigation} />;
+  if (!auth().currentUser) {
+    return <AuthNavigator />;
   } else {
     return (
       <View style={styles.container}>

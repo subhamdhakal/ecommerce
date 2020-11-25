@@ -8,3 +8,4 @@ export const SAVED_NOTIFIER_REMOVE = 'SAVED_NOTIFIER_REMOVE';
 export const INC = 'INC';
 export const DEC = 'DEC';
 export const SAVE_ADDRESS = 'SAVED_ADDRESS';
+export const ADD_USER = 'ADD_USER';

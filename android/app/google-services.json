@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "611512381629",
+    "firebase_url": "https://al-bazaar-88935.firebaseio.com",
+    "project_id": "al-bazaar-88935",
+    "storage_bucket": "al-bazaar-88935.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611512381629:android:4f2d93834aaa480b0487d4",
+        "android_client_info": {
+          "package_name": "com.al_bazaar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611512381629-bcb166nn539m3apkkvavhe94bo9n1q0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9_P0x0DNgbrqLBluOK_sMqOoEGcRoRMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611512381629-bcb166nn539m3apkkvavhe94bo9n1q0c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
