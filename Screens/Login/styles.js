@@ -21,6 +21,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
   },
+  input: {
+    backgroundColor: 'rgb(245, 245, 245)',
+    width: width * 0.75,
+    borderColor: 'rgb(198, 198, 198)',
+    borderWidth: 1,
+    borderRadius: 30,
+    paddingLeft: 45,
+  },
   image: {
     flex: 1,
     alignSelf: 'center',
@@ -35,39 +43,31 @@ const styles = StyleSheet.create({
     marginTop: width * 0.15,
     backgroundColor: 'rgb(28, 202, 97)',
     borderRadius: 20,
-    paddingVertical: 5,
-    paddingHorizontal: width * 0.31,
+    width: width * 0.75,
+    paddingVertical: 10,
   },
   btnText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: '700',
+    textAlign: 'center',
   },
   inputWrapper: {
     flexDirection: 'row',
     marginVertical: 5,
   },
-  inputPass: {
-    borderColor: 'black',
-    borderWidth: 1,
-    paddingVertical: 4,
-    paddingLeft: 40,
-    paddingRight: width * 0.45,
-    borderRadius: 30,
-  },
-  inputEmail: {
-    paddingRight: width * 0.48,
-    borderRadius: 30,
-    borderColor: 'black',
-    borderWidth: 1,
-    paddingLeft: 55,
-    paddingVertical: 4,
-  },
+
   inputIcon: {
-    marginRight: -30,
+    marginRight: -35,
     alignSelf: 'center',
+    color: 'grey',
+    zIndex: 1,
   },
   forgot: {
     marginVertical: 15,
+  },
+  forgotText: {
+    fontSize: 16,
   },
   signContainer: {
     flexDirection: 'row',
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   signText: {
     color: 'rgb(28, 202, 97)',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 export default styles;

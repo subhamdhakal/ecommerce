@@ -10,6 +10,20 @@ import AuthNavigator from '../../Navigation/AuthNavigator';
 
 function Profile({navigation}) {
   const user = useSelector((state) => state.user);
+  const signOutUser = () => {
+    auth()
+      .signOut()
+      .then(() => {
+        alert('Logged out');
+      })
+      .catch((error) => {
+        if (error) {
+          return null;
+        }
+      });
+    navigation.navigate('login');
+  };
+
   if (!auth().currentUser) {
     return <AuthNavigator />;
   } else {
@@ -20,7 +34,7 @@ function Profile({navigation}) {
             source={require('../../Assets/images/avatar.jpg')}
             style={styles.avatar}
           />
-          <TouchableOpacity style={styles.logoutBtn}>
+          <TouchableOpacity style={styles.logoutBtn} onPress={signOutUser}>
             <Text style={styles.logText}>Log Out</Text>
             <Ionicon name="exit-outline" size={22} color="rgb(28, 200, 95)" />
           </TouchableOpacity>

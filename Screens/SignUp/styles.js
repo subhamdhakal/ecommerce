@@ -4,17 +4,19 @@ const {width, height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   },
-  top: {flex: 1},
-
+  top: {
+    flex: 1,
+  },
   topNav: {
     flex: 0.4,
   },
   icon: {
     marginLeft: 30,
     marginTop: 30,
-    color: 'red',
+    color: 'rgb(28, 202, 97)',
+    zIndex: 1,
   },
   image: {
     flex: 1,
@@ -55,24 +57,25 @@ const styles = StyleSheet.create({
     borderColor: 'rgb(198, 198, 198)',
     borderWidth: 1,
     borderRadius: 30,
-    paddingLeft: 20,
+    paddingLeft: 40,
   },
   inputIcon: {
     marginRight: -30,
     alignSelf: 'center',
-    color: 'red',
+    color: 'grey',
+    zIndex: 1,
   },
   forgot: {
     marginVertical: 15,
   },
   signContainer: {
     flexDirection: 'row',
-    marginTop: 15,
+    marginTop: 20,
   },
   loginText: {
     color: 'rgb(28, 202, 97)',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 export default styles;

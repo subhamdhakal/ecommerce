@@ -10,6 +10,12 @@ const styles = StyleSheet.create({
   topNav: {
     flex: 0.4,
   },
+  title: {
+    color: 'rgb(46, 64, 60)',
+    fontSize: 26,
+    fontWeight: '700',
+    marginBottom: 10,
+  },
   icon: {
     marginLeft: 30,
     marginTop: 30,
@@ -24,39 +30,51 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1.8,
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
   btn: {
-    marginTop: 10,
+    marginTop: 20,
     backgroundColor: 'rgb(28, 202, 97)',
     borderRadius: 20,
-    paddingVertical: 5,
-    paddingHorizontal: width * 0.31,
+    width: width * 0.75,
+    paddingVertical: 10,
   },
   btnText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '700',
+    textAlign: 'center',
   },
   inputWrapper: {
     flexDirection: 'row',
     marginVertical: 5,
   },
-  inputEmail: {
-    paddingRight: width * 0.48,
-    borderRadius: 35,
-    borderColor: 'black',
+  input: {
+    backgroundColor: 'rgb(245, 245, 245)',
+    width: width * 0.75,
+    borderColor: 'rgb(198, 198, 198)',
     borderWidth: 1,
-    paddingLeft: 55,
-    paddingVertical: 4,
+    borderRadius: 30,
+    paddingLeft: 45,
+    color: 'black',
   },
   inputIcon: {
-    marginRight: -30,
+    marginRight: -35,
     alignSelf: 'center',
+    color: 'grey',
+    zIndex: 1,
   },
 
   signContainer: {
     flexDirection: 'row',
     marginTop: 15,
   },
+  linkText: {
+    color: 'grey',
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  errorMessage: {color: 'red', fontSize: 18, marginBottom: 20},
 });
 export default styles;

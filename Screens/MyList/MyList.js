@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
+import auth from '@react-native-firebase/auth';
 
 import Header from '../../Components/Header/Header';
 import CartItems from '../../Components/CartItems/CartItems';
@@ -9,6 +10,13 @@ import {getSavedTotal} from '../../Reducer/Reducer';
 
 function MyList({navigation}) {
   const saved = useSelector((state) => state.saved);
+  const buyNow = () => {
+    if (!auth().currentUser) {
+      navigation.navigate('login');
+    } else {
+      navigation.navigate('payment', {fromSaved: true});
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -36,11 +44,7 @@ function MyList({navigation}) {
                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>
                   Total: $<Text>{getSavedTotal(saved)}</Text>
                 </Text>
-                <TouchableOpacity
-                  style={styles.buyBtn}
-                  onPress={() =>
-                    navigation.navigate('payment', {fromSaved: true})
-                  }>
+                <TouchableOpacity style={styles.buyBtn} onPress={buyNow}>
                   <Text style={styles.buyBtnText}>Buy Now</Text>
                 </TouchableOpacity>
               </View>

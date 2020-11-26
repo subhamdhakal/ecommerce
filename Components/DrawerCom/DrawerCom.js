@@ -8,7 +8,6 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 
 function DrawerCom({navigation, props}) {
   const user = useSelector((state) => state.user);
-  console.log('user', user);
   return (
     <>
       <View style={styles.container}>
@@ -18,7 +17,9 @@ function DrawerCom({navigation, props}) {
         />
 
         {auth().currentUser ? (
-          <Text>ok</Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>{user.username}</Text>
+          </View>
         ) : (
           <View style={styles.textContainer}>
             <Text

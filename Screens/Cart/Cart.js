@@ -5,10 +5,17 @@ import {useSelector} from 'react-redux';
 import CartItems from '../../Components/CartItems/CartItems';
 import styles from './styles';
 import {getBasketTotal} from '../../Reducer/Reducer';
+import auth from '@react-native-firebase/auth';
 
 function Cart({navigation}) {
   const basket = useSelector((state) => state.basket);
-
+  const buyNow = () => {
+    if (!auth().currentUser) {
+      navigation.navigate('login');
+    } else {
+      navigation.navigate('payment', {fromSaved: false});
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -34,11 +41,7 @@ function Cart({navigation}) {
                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>
                   Total: $<Text>{getBasketTotal(basket)}</Text>
                 </Text>
-                <TouchableOpacity
-                  style={styles.buyBtn}
-                  onPress={() =>
-                    navigation.navigate('payment', {fromSaved: false})
-                  }>
+                <TouchableOpacity style={styles.buyBtn} onPress={buyNow}>
                   <Text style={styles.buyBtnText}>Buy Now</Text>
                 </TouchableOpacity>
               </View>

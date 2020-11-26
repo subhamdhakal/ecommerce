@@ -57,21 +57,23 @@ function Login({navigation}) {
       <View style={styles.inputContainer}>
         <Text style={styles.errorMessage}>{errorMessage}</Text>
         <View style={styles.inputWrapper}>
-          <FontAwesome name="envelope-o" size={20} style={styles.inputIcon} />
+          <FontAwesome name="envelope" size={18} style={styles.inputIcon} />
           <TextInput
             placeholder="Email"
-            style={styles.inputEmail}
+            style={styles.input}
+            placeholderTextColor="rgb(80,80,80)"
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
         </View>
 
         <View style={styles.inputWrapper}>
-          <FontAwesome name="key" size={20} style={styles.inputIcon} />
+          <Ionicon name="key" size={20} style={styles.inputIcon} />
           <TextInput
             placeholder="Password"
             secureTextEntry
-            style={styles.inputPass}
+            style={styles.input}
+            placeholderTextColor="rgb(80,80,80)"
             value={password}
             onChangeText={(text) => setPassword(text)}
           />
@@ -83,11 +85,11 @@ function Login({navigation}) {
         <TouchableOpacity
           style={styles.forgot}
           onPress={() => navigation.navigate('forgot')}>
-          <Text style={styles.forgotText}>Forgot Password</Text>
+          <Text style={styles.forgotText}>Forgot Password ?</Text>
         </TouchableOpacity>
 
         <View style={styles.signContainer}>
-          <Text>Already have accont ? </Text>
+          <Text style={styles.forgotText}>Already have accont ? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('signup')}>
             <Text style={styles.signText}> Sign In</Text>
           </TouchableOpacity>

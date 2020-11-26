@@ -83,6 +83,13 @@ function SelectedItem({navigation, route}) {
     navigation.navigate('cart');
   };
 
+  const buyNow = () => {
+    if (!auth().currentUser) {
+      navigation.navigate('login');
+    } else {
+      navigation.navigate('payment', {fromSaved: true});
+    }
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'android' ? null : 'padding'}
@@ -133,9 +140,7 @@ function SelectedItem({navigation, route}) {
         <TouchableOpacity style={styles.btn} onPress={addToBasket}>
           <Text style={{color: 'white', fontSize: 20}}>Add to Cart</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btns}
-          onPress={() => navigation.navigate('payment', {fromSaved: true})}>
+        <TouchableOpacity style={styles.btns} onPress={buyNow}>
           <Text style={{color: 'white', fontSize: 20}}>Buy Now</Text>
         </TouchableOpacity>
       </View>

@@ -11,13 +11,14 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {ADD_USER} from '../../Actons/types';
+import auth from '@react-native-firebase/auth';
 import styles from './styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 function SignUp({navigation}) {
   const {width, height} = Dimensions.get('screen');
-  const [username, setName] = useState('');
+  const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -25,9 +26,9 @@ function SignUp({navigation}) {
 
   const handleSignUp = () => {
     if (
-      (username == '' || null) &&
-      (email == '' || null) &&
-      (password == '' || null)
+      (username === '' || null) &&
+      (email === '' || null) &&
+      (password === '' || null)
     ) {
       setErrorMessage('Please type your credientials.');
     } else {
@@ -67,12 +68,7 @@ function SignUp({navigation}) {
         <TouchableOpacity
           style={styles.topNav}
           onPress={() => navigation.goBack()}>
-          <Ionicon
-            username="arrow-back"
-            size={34}
-            style={styles.icon}
-            color="black"
-          />
+          <Ionicon name="arrow-back" style={styles.icon} size={34} />
         </TouchableOpacity>
         <Image
           source={require('../../Assets/images/logo1.png')}
@@ -83,39 +79,36 @@ function SignUp({navigation}) {
       <View style={styles.inputContainer}>
         <Text style={styles.errorMessage}>{errorMessage}</Text>
         <View style={styles.inputWrapper}>
-          <Ionicon
-            username="person-outline"
-            size={20}
-            style={styles.inputIcon}
-          />
-
+          <Ionicon name="person-sharp" style={styles.inputIcon} size={18} />
           <TextInput
             placeholder="Username"
             style={styles.input}
             placeholderTextColor="rgb(80,80,80)"
+            value={username}
+            onChangeText={(text) => setUserName(text)}
           />
         </View>
 
         <View style={styles.inputWrapper}>
-          <FontAwesome
-            username="envelope-o"
-            size={20}
-            style={styles.inputIcon}
-          />
+          <FontAwesome name="envelope" size={16} style={styles.inputIcon} />
           <TextInput
             placeholder="Email"
             style={styles.input}
             placeholderTextColor="rgb(80,80,80)"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
           />
         </View>
 
         <View style={styles.inputWrapper}>
-          <FontAwesome username="key" size={20} style={styles.inputIcon} />
+          <Ionicon name="key" size={18} style={styles.inputIcon} />
           <TextInput
             placeholder="Password"
             style={styles.input}
             placeholderTextColor="rgb(80,80,80)"
             secureTextEntry
+            value={password}
+            onChangeText={(text) => setPassword(text)}
           />
         </View>
 
@@ -124,7 +117,7 @@ function SignUp({navigation}) {
         </TouchableOpacity>
 
         <View style={styles.signContainer}>
-          <Text>Already have accont ? </Text>
+          <Text style={{fontSize: 16}}>Already have accont ? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('login')}>
             <Text style={styles.loginText}> Login</Text>
           </TouchableOpacity>
