@@ -42,13 +42,17 @@
 <ul>
 <li>
   <h5>
-   Wordpress REST API
+    MongoDB REST API
     <h5>
   </li>
     <li>
   <h5>
    STRIPE PAYMENT
     <h5>
+      
+  </li>
+  <li>
+  <h5>PAYPAL PAYMENT </h5>
   </li>
 </ul>
   
