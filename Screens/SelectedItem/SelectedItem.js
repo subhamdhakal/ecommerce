@@ -115,7 +115,7 @@ function SelectedItem({navigation, route}) {
                     marginTop: 5,
                     marginRight: 10,
                   }}
-                  color="green"
+                  color="#3E7DBC"
                 />
               </TouchableOpacity>
             </View>

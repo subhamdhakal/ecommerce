@@ -49,7 +49,7 @@ function Login({navigation}) {
           <Ionicon name="arrow-back" size={34} style={styles.icon} />
         </TouchableOpacity>
         <Image
-          source={require('../../Assets/images/logo1.png')}
+          source={require('../../Assets/images/login.jpeg')}
           style={styles.image}
         />
       </View>
@@ -89,10 +89,31 @@ function Login({navigation}) {
         </TouchableOpacity>
 
         <View style={styles.signContainer}>
-          <Text style={styles.forgotText}>Already have accont ? </Text>
+          <Text style={styles.forgotText}>No Account ? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('signup')}>
-            <Text style={styles.signText}> Sign In</Text>
+            <Text style={styles.signText}> Sign Up</Text>
           </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={{fontWeight: 'bold'}}>Or</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignContent: 'space-between',
+              width: 200,
+              margin: 24,
+            }}>
+            <FontAwesome name="facebook-square" color={'#3b5998'} size={20} />
+            <FontAwesome name="google" color={'#DB4437'} size={20} />
+            <FontAwesome name="twitter" color={'#00ACEE'} size={20} />
+          </View>
         </View>
       </View>
     </KeyboardAvoidingView>

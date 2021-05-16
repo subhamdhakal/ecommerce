@@ -32,72 +32,41 @@ function Header({navigation, iconChange}) {
     <KeyboardAvoidingView style={styles.header} keyboardVerticalOffset={60}>
       <View style={styles.leftHeader}>
         <Ionicon
-          name={iconChange ? 'arrow-back' : 'menu'}
+          name={'person-circle-sharp'}
           size={30}
           onPress={() => {
-            iconChange ? navigation.goBack() : navigation.openDrawer();
+            navigation.openDrawer();
           }}
           style={styles.icon}
         />
-        {iconChange ? null : (
-          <Image
-            source={require('../../Assets/images/logo.png')}
-            style={styles.logo}
-          />
-        )}
       </View>
       <View style={styles.rightHeader}>
-        {open == false ? (
-          <>
-            <TouchableOpacity onPress={openSearch}>
-              {iconChange ? null : (
-                <Ionicon name="search" size={30} style={styles.icon} />
-              )}
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate('mylist')}>
-              {savedNotifier > 0 ? (
-                <>
-                  <View style={styles.notifierContainer}>
-                    <Text style={styles.notifierText}>{savedNotifier}</Text>
-                  </View>
-                  <Ionicon name="heart" size={30} style={styles.icon} />
-                </>
-              ) : (
-                <Ionicon name="heart" size={30} style={styles.icon} />
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('cart')}>
-              {notifier > 0 ? (
-                <>
-                  <View style={styles.notifierContainer}>
-                    <Text style={styles.notifierText}>{notifier}</Text>
-                  </View>
-                  <Ionicon name="cart" size={30} style={styles.icon} />
-                </>
-              ) : (
-                <Ionicon name="cart" size={30} style={styles.icon} />
-              )}
-            </TouchableOpacity>
-          </>
-        ) : (
-          <View
+        <View style={{flexDirection: 'row', marginVertical: 5}}>
+          <Ionicon
+            name="search"
+            size={18}
             style={{
-              flexDirection: 'row',
-            }}>
-            <TextInput
-              placeholder="Search"
-              maxLength={15}
-              style={styles.searchInput}
-              placeholderTextColor="rgb(46, 64, 60)"
-            />
-            <TouchableOpacity
-              onPress={close}
-              style={styles.searchIconContainer}>
-              <Ionicon name="search" size={30} style={styles.icon} />
-            </TouchableOpacity>
-          </View>
-        )}
+              marginRight: -35,
+              alignSelf: 'center',
+              color: 'grey',
+              zIndex: 1,
+            }}
+          />
+          <TextInput
+            placeholder="Search"
+            style={styles.input}
+            placeholderTextColor="rgb(80,80,80)"
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
+        <Ionicon
+          name={'menu'}
+          size={30}
+          onPress={() => {
+            navigation.openDrawer();
+          }}
+          style={styles.icon}
+        />
       </View>
     </KeyboardAvoidingView>
   );

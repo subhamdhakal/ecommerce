@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   icon: {
     marginLeft: 30,
     marginTop: 30,
-    color: 'rgb(28, 202, 97)',
+    color: '#3E7DBC',
   },
   errorMessage: {
     color: 'red',
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     marginTop: width * 0.15,
-    backgroundColor: 'rgb(28, 202, 97)',
+    backgroundColor: '#3E7DBC',
     borderRadius: 20,
     width: width * 0.75,
     paddingVertical: 10,
@@ -67,15 +67,15 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   forgotText: {
-    fontSize: 16,
+    fontSize: 12,
   },
   signContainer: {
     flexDirection: 'row',
   },
   signText: {
-    color: 'rgb(28, 202, 97)',
+    color: '#3E7DBC',
     fontWeight: '700',
-    fontSize: 18,
+    fontSize: 14,
   },
 });
 export default styles;

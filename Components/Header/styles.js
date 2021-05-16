@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import colors from '../../src/assets/colors/colors';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -7,15 +8,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 5,
     alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgb(50,50,50)',
     flex: 1,
+    backgroundColor: colors.primary,
   },
   leftHeader: {
-    flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
     marginLeft: 5,
+  },
+  searchSection: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  searchIcon: {
+    padding: 10,
+  },
+  input: {
+    backgroundColor: 'rgb(245, 245, 245)',
+    borderColor: 'rgb(198, 198, 198)',
+    borderWidth: 1,
+    borderRadius: 30,
+    paddingLeft: 45,
+    width: 300,
   },
   rightHeader: {
     flex: 1,
@@ -29,7 +46,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   icon: {
-    color: 'rgb(28, 202, 96)',
+    color: colors.white,
   },
   notifierContainer: {
     backgroundColor: 'rgb(50, 50, 50)',

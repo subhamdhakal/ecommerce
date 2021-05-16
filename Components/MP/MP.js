@@ -5,33 +5,25 @@ import styles from './styles';
 function MP({navigation}) {
   return (
     <View style={styles.firstRow}>
-      <Text style={styles.first_text}>MEAT & POULTRY</Text>
       <View style={styles.first_img}>
-        <TouchableOpacity>
-          <Image
-            source={require('../../Assets/images/meat.jpg')}
-            style={styles.first_images}
-          />
+        <TouchableOpacity style={{width: '10%'}}>
+          <Image source={require('../../Assets/icons/Home-appliances.png')} />
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Image
-            source={require('../../Assets/images/mp2.jpg')}
-            style={styles.first_images}
-          />
+          <Image source={require('../../Assets/icons/Smartphone.png')} />
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Image
-            source={require('../../Assets/images/mp.jpg')}
-            style={styles.first_images}
-          />
+          <Image source={require('../../Assets/icons/fitbit.png')} />
         </TouchableOpacity>
-      </View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-        <Text>BEEF</Text>
-        <Text style={{marginLeft: 10}}>LAMB</Text>
-        <Text>CHICKEN</Text>
+        <TouchableOpacity>
+          <Image source={require('../../Assets/icons/tv.png')} />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Image source={require('../../Assets/icons/audio-accessories.png')} />
+        </TouchableOpacity>
       </View>
     </View>
   );

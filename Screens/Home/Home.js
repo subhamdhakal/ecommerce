@@ -14,6 +14,8 @@ import Header from '../../Components/Header/Header';
 import MP from '../../Components/MP/MP';
 import TopBanner from '../../Components/TopBanner/TopBanner';
 import {useSelector} from 'react-redux';
+import HomeScreenTabs from './HomeScreenTabs';
+import colors from '../../src/assets/colors/colors';
 
 function Home({navigation}) {
   const searching = useSelector((state) => state.searching);

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   icon: {
     marginLeft: 30,
     marginTop: 30,
-    color: 'rgb(28, 202, 97)',
+    color: '#3E7DBC',
     zIndex: 1,
   },
   image: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     marginTop: width * 0.15,
-    backgroundColor: 'rgb(28, 202, 97)',
+    backgroundColor: '#3E7DBC',
     borderRadius: 20,
     width: width * 0.75,
     paddingVertical: 10,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   loginText: {
-    color: 'rgb(28, 202, 97)',
+    color: '#3E7DBC',
     fontWeight: '700',
     fontSize: 18,
   },

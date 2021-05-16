@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btns: {
-    backgroundColor: 'rgb(28, 200, 96)',
+    backgroundColor: '#3E7DBC',
     paddingHorizontal: width * 0.163,
     paddingVertical: 12,
     justifyContent: 'center',
