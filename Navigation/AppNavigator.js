@@ -7,6 +7,7 @@ import ProfileNavigator from './ProfileNavigator';
 import DrawerNavigator from './DrawerNavigator';
 import Cart from '../Screens/Cart/Cart';
 import MyList from '../Screens/MyList/MyList';
+import colors from '../src/assets/colors/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,9 @@ function AppNavigator() {
               iconName = focused ? 'cart' : 'cart-outline';
               size = 32;
             } else if (route.name === 'mylist') {
-              iconName = focused ? 'heart' : 'heart-outline';
+              iconName = focused
+                ? 'ios-chatbox-ellipses'
+                : 'ios-chatbox-ellipses-outline';
               size = 30;
             } else if (route.name === 'profile') {
               iconName = focused ? 'md-person' : 'md-person-outline';
@@ -35,7 +38,7 @@ function AppNavigator() {
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'green',
+          activeTintColor: colors.parrotGreen,
           inactiveTintColor: 'black',
           borderColor: 'black',
           showLabel: false,
@@ -47,8 +50,8 @@ function AppNavigator() {
           keyboardHidesTabBar: true,
         }}>
         <Tab.Screen name="home" component={DrawerNavigator} />
-        <Tab.Screen name="cart" component={Cart} />
         <Tab.Screen name="mylist" component={MyList} />
+        <Tab.Screen name="cart" component={Cart} />
         <Tab.Screen name="profile" component={ProfileNavigator} />
       </Tab.Navigator>
     </NavigationContainer>

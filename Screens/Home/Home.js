@@ -23,7 +23,7 @@ function Home({navigation}) {
     <KeyboardAvoidingView
       behavior={Platform.OS == 'android' ? null : 'padding'}
       style={styles.container}>
-      <View style={searching ? styles.header : styles.header1}>
+      <View style={styles.header}>
         <Header navigation={navigation} />
       </View>
 
@@ -32,17 +32,17 @@ function Home({navigation}) {
           <View style={{height: 200}}>
             <TopBanner navigation={navigation} />
           </View>
-          <View style={{height: 170}}>
+          <View style={{height: 70}}>
             <MP navigation={navigation} />
           </View>
           <View style={styles.category}>
             <BestSelling navigation={navigation} />
           </View>
 
-          <View style={styles.category}>
+          <View style={styles.recommended}>
             <Dairy navigation={navigation} />
           </View>
-          <View style={styles.category}>
+          <View style={styles.recommended}>
             <Cans navigation={navigation} />
           </View>
         </ScrollView>
@@ -58,8 +58,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   category: {
-    height: 330,
+    height: 200,
     marginBottom: 20,
+  },
+  recommended: {
+    height: 550,
   },
   header: {
     flex: 0.1,

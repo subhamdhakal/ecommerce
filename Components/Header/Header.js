@@ -33,7 +33,7 @@ function Header({navigation, iconChange}) {
       <View style={styles.leftHeader}>
         <Ionicon
           name={'person-circle-sharp'}
-          size={30}
+          size={48}
           onPress={() => {
             navigation.openDrawer();
           }}
@@ -41,7 +41,13 @@ function Header({navigation, iconChange}) {
         />
       </View>
       <View style={styles.rightHeader}>
-        <View style={{flexDirection: 'row', marginVertical: 5}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginVertical: 5,
+            flex: 1,
+            marginLeft: 24,
+          }}>
           <Ionicon
             name="search"
             size={18}

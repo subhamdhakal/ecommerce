@@ -10,7 +10,7 @@ function BestSelling({navigation}) {
   const DATA = [
     {
       id: '2',
-      image: require('../../Assets/images/best5.jpg'),
+      image: 'https://www.wareable.com/media/imager/201911/34568-original.jpg',
       name: 'Olive Oil',
       descShort: '1 pack - 1kg',
       descLong:
@@ -21,7 +21,9 @@ function BestSelling({navigation}) {
     },
     {
       id: '3',
-      image: require('../../Assets/images/best2.png'),
+      image:
+        'https://yescart.creatrixtechnologies.com/images/thumbs/0000108_mobvoi-ticwatch-pro-3_415.jpeg',
+
       name: 'Olive Oil Small',
       descShort: 'Italian  - 700gr',
       descLong:
@@ -32,7 +34,8 @@ function BestSelling({navigation}) {
     },
     {
       id: '4',
-      image: require('../../Assets/images/best4.png'),
+      image:
+        'https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/fiercebiotech/1618579110/Screen%20Shot%202019-09-11%20at%201.36.04%20PM.png/Screen%20Shot%202019-09-11%20at%201.36.04%20PM.png?yauMJ..V9C_zLkMC03TlbYkjH1mV0y92&itok=xygtMUk9',
       name: 'Olive Oil Large',
       descShort: 'Extra large-1.3kg',
       descLong:
@@ -68,33 +71,20 @@ function BestSelling({navigation}) {
 
     return (
       <View style={styles.bestContainer}>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('selectedItem', {
-              id: item.id,
-              image: item.image,
-              name: item.name,
-              descShort: item.descShort,
-              price: item.price,
-              qty: item.qty,
-              descLong: item.descLong,
-              rating: item.rating,
-            })
-          }>
-          <Image source={item.image} style={styles.img} />
-        </TouchableOpacity>
-        <Text style={styles.itemName}>{item.name}</Text>
-        <Text style={styles.itemDesc}>{item.descShort}</Text>
-        <Text style={styles.itemPrice}>${item.price}</Text>
-        <TouchableOpacity style={styles.addBtn} onPress={addToBasket}>
-          <Text style={styles.addBtnText}>Add to Cart</Text>
-        </TouchableOpacity>
+        <Image
+          source={{
+            uri: item.image,
+          }}
+          resizeMode={'cover'}
+          resizeMethod={'resize'}
+          style={styles.img}
+        />
       </View>
     );
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>BEST SELLING</Text>
+      <Text style={styles.title}>Featured Products</Text>
 
       <FlatList
         data={DATA}

@@ -6,22 +6,23 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bestContainer: {
-    borderWidth: 1,
     marginLeft: 15,
     borderRadius: 9,
     borderColor: 'grey',
+    borderWidth: 1,
   },
   img: {
-    height: width * 0.35,
+    height: width * 0.38,
     width: width * 0.35,
     borderTopLeftRadius: 7.5,
     borderTopRightRadius: 7.5,
   },
   title: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 12,
     marginLeft: 15,
     marginVertical: 10,
+    alignSelf: 'center',
+    fontFamily: 'HelveticaNowDisplay-Bold',
   },
   itemName: {
     fontSize: 16,

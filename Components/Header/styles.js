@@ -6,7 +6,7 @@ const height = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
     alignItems: 'center',
     flex: 1,
     backgroundColor: colors.primary,
@@ -32,7 +32,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 30,
     paddingLeft: 45,
+    marginRight: 32,
     width: 300,
+    fontSize: 14,
+    height: 38,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   rightHeader: {
     flex: 1,
